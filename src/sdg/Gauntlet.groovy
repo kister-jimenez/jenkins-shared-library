@@ -466,18 +466,20 @@ def nebula(cmd, full=false, show_log=false) {
 
 private def install_nebula() {
     if (checkOs() == 'Windows') {
-        bat 'git clone https://github.com/tfcollins/nebula.git'
+        bat 'git clone https://github.com/kister-jimenez/nebula.git'
         dir('nebula')
         {
+            bat 'git checkout fix_tar_gz'
             bat 'pip install -r requirements.txt'
             bat 'python setup.py install'
         }
     }
     else {
         sh 'pip3 uninstall nebula -y || true'
-        sh 'git clone https://github.com/tfcollins/nebula.git'
+        sh 'git clone https://github.com/kister-jimenez/nebula.git'
         dir('nebula')
         {
+            sh 'git checkout fix_tar_gz'
             sh 'pip3 install -r requirements.txt'
             sh 'python3 setup.py install'
         }
